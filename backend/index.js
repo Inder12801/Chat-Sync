@@ -44,7 +44,7 @@ const server = app.listen(5000, () => {
 
 const io = new SocketIOServer(server, {
   cors: {
-    origin: "https://chat-sync.vercel.app/",
+    origin: "http://localhost:5173",
     methods: ["GET", "POST"],
   },
   pingInterval: 60000,
