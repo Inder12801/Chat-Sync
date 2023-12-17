@@ -17,7 +17,10 @@ dotenv.config();
 // enable cors from url = https://chat-sync.vercel.app
 
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://chat-sync.vercel.app/");
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://chat-sync-server.vercel.app/"
+  );
   res.setHeader(
     "Access-Control-Allow-Methods",
     "GET, POST, OPTIONS, PUT, PATCH, DELETE"
@@ -55,7 +58,7 @@ const server = app.listen(5000, () => {
 
 const io = new SocketIOServer(server, {
   cors: {
-    origin: "https://chat-sync.vercel.app/",
+    origin: "https://chat-sync-server.vercel.app/",
     methods: ["GET", "POST"],
   },
   pingInterval: 60000,
