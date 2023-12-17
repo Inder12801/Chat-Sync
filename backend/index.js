@@ -7,6 +7,7 @@ import { connectToDB } from "./config/connectToDB.js";
 import userRoute from "./routes/userRoute.js";
 import chatRoute from "./routes/chatRoute.js";
 import messageRoute from "./routes/messageRoute.js";
+import cors from "cors";
 
 // creating a server
 const app = express();
@@ -16,19 +17,7 @@ app.use(express.json());
 dotenv.config();
 // enable cors from url = https://chat-sync.vercel.app
 
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://chat-sync.vercel.app/");
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-  );
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "X-Requested-With,content-type"
-  );
-  res.setHeader("Access-Control-Allow-Credentials", true);
-  next();
-});
+app.use(cors());
 
 // connect to database
 connectToDB();
