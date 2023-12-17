@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { ChatState } from "../context/ChatProvider";
 import { Box, flexbox } from "@chakra-ui/react";
 import SideDrawer from "../components/Chat/SideDrawer";
 import MyChats from "../components/Chat/MyChats";
@@ -8,6 +7,7 @@ import ChatBox from "../components/Chat/ChatBox";
 import SearchDrawer from "../components/Chat/SearchDrawer";
 import Header from "../components/Chat/Header";
 import Loader from "../components/Loader/Loader";
+import { ChatState } from "../App";
 
 const ChatsPage = () => {
   const { user, theme } = ChatState();

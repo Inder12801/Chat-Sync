@@ -15,12 +15,12 @@ import {
   FormControl,
   Input,
 } from "@chakra-ui/react";
-import { ChatState } from "../../context/ChatProvider";
 import UserBadge from "./UserBadge";
 import Loader from "../Loader/Loader";
 import UserListItem from "../Chat/UserListItem";
 import axios from "axios";
 import { AiOutlineFullscreenExit } from "react-icons/ai";
+import { ChatState } from "../../App";
 
 const UpdateGroupChatModal = ({
   fetchAgain,

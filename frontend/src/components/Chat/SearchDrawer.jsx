@@ -19,9 +19,10 @@ import React, { useState, useRef } from "react";
 import axios from "axios";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import { ArrowRightIcon } from "@chakra-ui/icons";
-import { ChatState } from "../../context/ChatProvider";
+
 import ChatLoading from "./ChatLoading";
 import UserListItem from "./UserListItem";
+import { ChatState } from "../../App";
 
 const SearchDrawer = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();

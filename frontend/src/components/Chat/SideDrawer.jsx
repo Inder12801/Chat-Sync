@@ -26,13 +26,13 @@ import {
   AiOutlineLogout,
 } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
-import { ChatState } from "../../context/ChatProvider";
-import { Badge } from "@mui/material";
+
 import {
   MdDarkMode,
   MdOutlineDarkMode,
   MdOutlineLightMode,
 } from "react-icons/md";
+import { ChatState } from "../../App";
 
 const SideDrawer = () => {
   const navigate = useNavigate();

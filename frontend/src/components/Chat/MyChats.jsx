@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import SearchDrawer from "./SearchDrawer";
-import { ChatState } from "../../context/ChatProvider";
 import { Box, Button, Stack, Text, VStack, useToast } from "@chakra-ui/react";
 import axios from "axios";
 import { AddIcon } from "@chakra-ui/icons";
 import ChatLoading from "./ChatLoading";
 import GroupChatModal from "../GroupChat/GroupChatModal";
 import { motion } from "framer-motion";
+import { ChatState } from "../../App";
 
 const MyChats = ({ fetchAgain }) => {
   const toast = useToast();

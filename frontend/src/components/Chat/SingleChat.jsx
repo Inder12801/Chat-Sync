@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { ChatState } from "../../context/ChatProvider";
 import {
   Avatar,
   Box,
@@ -28,6 +27,7 @@ import typingGif from "../../assets/typing.gif";
 import chatGif from "../../assets/chat-app-animation.json";
 import ChatLoader from "../Loader/ChatLoader";
 import Lottie from "lottie-react";
+import { ChatState } from "../../App";
 
 const ENDPOINT = "http://localhost:5000";
 let socket, selectedChatCompare;
