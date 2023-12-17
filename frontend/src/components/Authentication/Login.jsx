@@ -18,6 +18,7 @@ import { useNavigate } from "react-router-dom";
 import PersonIcon from "@mui/icons-material/Person";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { API_URL } from "../../App";
 
 const Login = () => {
   const toast = useToast();
@@ -43,7 +44,7 @@ const Login = () => {
     } else {
       try {
         const res = axios.post(
-          "/api/user/login",
+          API_URL + "/api/user/login",
           { ...loginformData },
           {
             headers: {

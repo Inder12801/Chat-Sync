@@ -19,6 +19,7 @@ import addImageIcon from "../../assets/addImageIcon.png";
 import { useNavigate } from "react-router-dom";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { API_URL } from "../../App.jsx";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -152,7 +153,7 @@ const Signup = () => {
     try {
       // console.log(signupformData);
       const res = await axios.post(
-        "/api/user/register",
+        API_URL + "/api/user/register",
         {
           name: signupformData.name,
           email: signupformData.email,

@@ -5,6 +5,8 @@ import HomePage from "./pages/HomePage";
 import ChatsPage from "./pages/ChatsPage";
 
 const ChatContext = createContext();
+export const API_URL = import.meta.env.VITE_SERVER_API_URL;
+
 function App() {
   const [user, setUser] = useState();
   const [selectedChat, setSelectedChat] = useState();
@@ -26,6 +28,7 @@ function App() {
     setShowMyChats,
     theme,
     setTheme,
+    API_URL,
   };
 
   // Get the current logged in user. If there is no user, redirect to login page.
