@@ -14,7 +14,6 @@ import {
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import ProfileModal from "./ProfileModal";
 import logo from "../../assets/Chat Sync-Logo-Transparent.png";
-import { ChatState } from "../../App";
 
 const Header = () => {
   const { user, theme } = ChatState();

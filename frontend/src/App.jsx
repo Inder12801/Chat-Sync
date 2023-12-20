@@ -3,6 +3,7 @@ import "./App.css";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import HomePage from "./pages/HomePage";
 import ChatsPage from "./pages/ChatsPage";
+import { ChatState } from "./context/ChatProvider";
 
 const ChatContext = createContext();
 export const API_URL = import.meta.env.VITE_SERVER_API_URL;
