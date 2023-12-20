@@ -10,7 +10,7 @@ const ChatBox = ({ fetchAgain, setFetchAgain }) => {
       // width={"69%"}
       p={3}
       // m={2}
-      height={["100%", "97%"]}
+      height={["100%", "100%"]}
       borderRadius={"20px"}
       display={[showMyChats ? "none" : "inline", "inline"]}
       // className="div-shadow"

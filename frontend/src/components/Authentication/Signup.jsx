@@ -19,6 +19,7 @@ import addImageIcon from "../../assets/addImageIcon.png";
 import { useNavigate } from "react-router-dom";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { API_URL } from "../../context/ChatProvider.jsx";
 
 const Signup = () => {
   const navigate = useNavigate();

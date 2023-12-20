@@ -22,7 +22,7 @@ import { ArrowRightIcon } from "@chakra-ui/icons";
 
 import ChatLoading from "./ChatLoading";
 import UserListItem from "./UserListItem";
-import { ChatState } from "../../context/ChatProvider";
+import { API_URL, ChatState } from "../../context/ChatProvider";
 const SearchDrawer = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
@@ -76,7 +76,7 @@ const SearchDrawer = () => {
     // userId is the id with which logged in user will create a chat.
     try {
       setLoadingChat(true);
-      const res = await axios.post("/api/chat", { userId }, config);
+      const res = await axios.post(API_URL + "/api/chat", { userId }, config);
       console.log(res.data);
       if (!chats.find((c) => c._id === res.data._id))
         setChats([res.data, ...chats]);

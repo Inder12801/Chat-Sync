@@ -19,7 +19,7 @@ import axios from "axios";
 import Loader from "../Loader/Loader";
 import UserListItem from "../Chat/UserListItem";
 import UserBadge from "./UserBadge";
-import { ChatState } from "../../context/ChatProvider";
+import { API_URL, ChatState } from "../../context/ChatProvider";
 
 const GroupChatModal = ({ children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -44,7 +44,10 @@ const GroupChatModal = ({ children }) => {
           Authorization: `Bearer ${loggedUser?.token}`,
         },
       };
-      const res = await axios.get(`/api/user?search=${query}`, config);
+      const res = await axios.get(
+        API_URL + `/api/user?search=${query}`,
+        config
+      );
       setLoading(false);
       setSearchResults(res.data);
     } catch (error) {
@@ -101,7 +104,7 @@ const GroupChatModal = ({ children }) => {
         },
       };
       const res = await axios.post(
-        "/api/chat/group",
+        API_URL + "/api/chat/group",
         {
           name: groupChatName,
           users: JSON.stringify(selectedUsers.map((u) => u._id)),

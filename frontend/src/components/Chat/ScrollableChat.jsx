@@ -3,6 +3,7 @@ import { Box, Avatar, Text, Tooltip } from "@chakra-ui/react";
 import moment from "moment";
 import { MdDelete } from "react-icons/md";
 import axios from "axios";
+import { API_URL } from "../../context/ChatProvider";
 
 const ScrollableChat = ({ messages, setMessages, loggedInUser, theme }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -19,7 +20,7 @@ const ScrollableChat = ({ messages, setMessages, loggedInUser, theme }) => {
         },
       };
       const res = await axios.delete(
-        `/api/message/delete/${messageId}`,
+        API_URL + `/api/message/delete/${messageId}`,
         config
       );
       setMessages(messages.filter((message) => message._id !== messageId));

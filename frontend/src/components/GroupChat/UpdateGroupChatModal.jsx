@@ -20,7 +20,7 @@ import Loader from "../Loader/Loader";
 import UserListItem from "../Chat/UserListItem";
 import axios from "axios";
 import { AiOutlineFullscreenExit } from "react-icons/ai";
-import { ChatState } from "../../context/ChatProvider";
+import { API_URL, ChatState } from "../../context/ChatProvider";
 
 const UpdateGroupChatModal = ({
   fetchAgain,
@@ -52,7 +52,7 @@ const UpdateGroupChatModal = ({
         },
       };
       const res = await axios.put(
-        `/api/chat/rename`,
+        API_URL + `/api/chat/rename`,
         { chatName: groupChatName, chatId: selectedChat._id },
         config
       );
@@ -84,7 +84,10 @@ const UpdateGroupChatModal = ({
           Authorization: `Bearer ${loggedUser?.token}`,
         },
       };
-      const res = await axios.get(`/api/user?search=${query}`, config);
+      const res = await axios.get(
+        API_URL + `/api/user?search=${query}`,
+        config
+      );
       setLoading(false);
       setSearchResults(res.data);
     } catch (error) {
@@ -138,7 +141,7 @@ const UpdateGroupChatModal = ({
         },
       };
       const res = await axios.put(
-        "/api/chat/groupadd",
+        API_URL + "/api/chat/groupadd",
         { userId: searchedUser._id, chatId: selectedChat._id },
         config
       );
@@ -181,7 +184,7 @@ const UpdateGroupChatModal = ({
         },
       };
       const res = await axios.put(
-        "/api/chat/groupremove",
+        API_URL + "/api/chat/groupremove",
         { userId: userToDeleteFromGroup._id, chatId: selectedChat._id },
         config
       );
@@ -225,7 +228,7 @@ const UpdateGroupChatModal = ({
         },
       };
       const res = await axios.put(
-        "/api/chat/groupremove",
+        API_URL + "/api/chat/groupremove",
         { userId: loggedUser._id, chatId: selectedChat._id },
         config
       );

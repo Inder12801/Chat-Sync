@@ -100,7 +100,6 @@ const SideDrawer = () => {
           justifyContent={"space-evenly"}
         >
           <Tooltip
-            label="Home"
             placement="bottom-end"
             display={isExpanded ? "none" : "inline"}
             className="tooltip-style"
@@ -123,7 +122,6 @@ const SideDrawer = () => {
           <Menu>
             <MenuButton>
               <Tooltip
-                label="Notifications"
                 placement="bottom-end"
                 display={isExpanded ? "none" : "inline"}
                 borderRadius={"20px"}
@@ -204,7 +202,6 @@ const SideDrawer = () => {
           </Menu>
 
           <Tooltip
-            label="Chats"
             placement="bottom-end"
             display={isExpanded ? "none" : "inline"}
             borderRadius={"20px"}
@@ -223,7 +220,6 @@ const SideDrawer = () => {
           </Tooltip>
 
           <Tooltip
-            label="Theme"
             placement="bottom-end"
             display={isExpanded ? "none" : "inline"}
             borderRadius={"20px"}
@@ -248,7 +244,6 @@ const SideDrawer = () => {
         </VStack>
 
         <Tooltip
-          label="Logout"
           placement="bottom-end"
           display={isExpanded ? "none" : "inline"}
           borderRadius={"20px"}

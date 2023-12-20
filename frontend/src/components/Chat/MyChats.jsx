@@ -6,7 +6,7 @@ import { AddIcon } from "@chakra-ui/icons";
 import ChatLoading from "./ChatLoading";
 import GroupChatModal from "../GroupChat/GroupChatModal";
 import { motion } from "framer-motion";
-import { ChatState } from "../../context/ChatProvider";
+import { API_URL, ChatState } from "../../context/ChatProvider";
 
 const MyChats = ({ fetchAgain }) => {
   const toast = useToast();
@@ -33,7 +33,7 @@ const MyChats = ({ fetchAgain }) => {
 
   const fetchChats = async () => {
     try {
-      let res = await axios.get("/api/chat", config);
+      let res = await axios.get(API_URL + "/api/chat", config);
       setChats(res.data);
       console.log(res.data);
     } catch (error) {

@@ -27,7 +27,7 @@ import typingGif from "../../assets/typing.gif";
 import chatGif from "../../assets/chat-app-animation.json";
 import ChatLoader from "../Loader/ChatLoader";
 import Lottie from "lottie-react";
-import { ChatState } from "../../context/ChatProvider";
+import { API_URL, ChatState } from "../../context/ChatProvider";
 
 const ENDPOINT = "http://localhost:5000";
 let socket, selectedChatCompare;
@@ -69,7 +69,10 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         },
       };
       setLoading(true);
-      const res = await axios.get(`/api/message/${selectedChat._id}`, config);
+      const res = await axios.get(
+        API_URL + `/api/message/${selectedChat._id}`,
+        config
+      );
       setMessages(res.data);
       setLoading(false);
       socket.emit("join-chat", selectedChat._id);
@@ -97,7 +100,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             },
           };
           const res = await axios.post(
-            "/api/message",
+            API_URL + "/api/message",
             {
               content: newMessage,
               chatId: selectedChat._id,
