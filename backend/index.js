@@ -42,9 +42,12 @@ const server = app.listen(5000, () => {
   console.log("Server is running on port : ", 5000);
 });
 
+const url = "http://localhost:5173";
+const vercelURL = "https://chat-sync.vercel.app";
+
 const io = new SocketIOServer(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: vercelURL,
     methods: ["GET", "POST"],
   },
   pingInterval: 60000,
