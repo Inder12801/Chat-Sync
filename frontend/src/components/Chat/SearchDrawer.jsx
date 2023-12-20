@@ -131,7 +131,10 @@ const SearchDrawer = () => {
       <Drawer
         isOpen={isOpen}
         placement="left"
-        onClose={onClose}
+        onClose={() => {
+          onClose();
+          setSearchResults([]);
+        }}
         finalFocusRef={btnRef}
       >
         <DrawerOverlay />

@@ -13,11 +13,15 @@ import cors from "cors";
 const app = express();
 
 // middlewares
+app.use(
+  cors({
+    origin: "https://chat-sync.vercel.app",
+    credentials: true,
+  })
+);
 app.use(express.json());
 dotenv.config();
 // enable cors from url = https://chat-sync.vercel.app
-
-app.use(cors());
 
 // connect to database
 connectToDB();

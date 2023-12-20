@@ -137,7 +137,7 @@ const MyChats = ({ fetchAgain }) => {
                       <Text
                         fontFamily={"Poppins"}
                         fontWeight={"500"}
-                        fontSize={["sm", "1.1vw"]}
+                        fontSize={["xs", "1.1vw"]}
                       >
                         {getSender(loggedUser, chat.users)}
                       </Text>
@@ -145,7 +145,7 @@ const MyChats = ({ fetchAgain }) => {
                       <Text
                         fontFamily={"Poppins"}
                         fontWeight={"500"}
-                        fontSize={["sm", "1.1vw"]}
+                        fontSize={["xs", "1.1vw"]}
                       >
                         {chat.chatName}
                       </Text>
