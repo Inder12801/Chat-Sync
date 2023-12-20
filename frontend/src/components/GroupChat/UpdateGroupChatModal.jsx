@@ -20,7 +20,7 @@ import Loader from "../Loader/Loader";
 import UserListItem from "../Chat/UserListItem";
 import axios from "axios";
 import { AiOutlineFullscreenExit } from "react-icons/ai";
-import { ChatState } from "../../App";
+import { ChatState } from "../../context/ChatProvider";
 
 const UpdateGroupChatModal = ({
   fetchAgain,

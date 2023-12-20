@@ -22,8 +22,7 @@ import { ArrowRightIcon } from "@chakra-ui/icons";
 
 import ChatLoading from "./ChatLoading";
 import UserListItem from "./UserListItem";
-import { ChatState } from "../../App";
-
+import { ChatState } from "../../context/ChatProvider";
 const SearchDrawer = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();

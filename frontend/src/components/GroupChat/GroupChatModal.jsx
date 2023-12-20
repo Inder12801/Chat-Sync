@@ -19,7 +19,7 @@ import axios from "axios";
 import Loader from "../Loader/Loader";
 import UserListItem from "../Chat/UserListItem";
 import UserBadge from "./UserBadge";
-import { ChatState } from "../../App";
+import { ChatState } from "../../context/ChatProvider";
 
 const GroupChatModal = ({ children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();

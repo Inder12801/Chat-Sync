@@ -7,6 +7,7 @@ import ChatBox from "../components/Chat/ChatBox";
 import SearchDrawer from "../components/Chat/SearchDrawer";
 import Header from "../components/Chat/Header";
 import Loader from "../components/Loader/Loader";
+import { ChatState } from "../context/ChatProvider";
 
 const ChatsPage = () => {
   const { user, theme } = ChatState();

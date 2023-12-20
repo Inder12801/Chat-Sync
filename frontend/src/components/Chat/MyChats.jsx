@@ -60,7 +60,7 @@ const MyChats = ({ fetchAgain }) => {
         w={["100%", "30%"]}
         p={3}
         height={"97%"}
-        // m={2}
+        ml={2}
         borderRadius={"20px"}
         flex={1}
       >
