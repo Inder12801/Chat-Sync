@@ -1,6 +1,7 @@
-import { React, createContext, useContext, useEffect, useState } from "react";
+import * as React from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-export const API_URL = import.meta.env.VITE_SERVER_API_URL;
+// export const API_URL = import.meta.env.VITE_SERVER_API_URL;
 
 const ChatContext = createContext();
 const ChatProvider = ({ children }) => {
