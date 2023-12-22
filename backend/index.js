@@ -13,7 +13,12 @@ import cors from "cors";
 const app = express();
 
 // middlewares
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    credentials: true,
+  })
+);
 app.use(express.json());
 dotenv.config();
 // enable cors from url = https://chat-sync.vercel.app
@@ -31,6 +36,16 @@ app.use("/api/chat", chatRoute);
 
 app.use("/api/message", messageRoute);
 
+// ----------------------
+
+// const _dirname1 = path.resolve();
+// app.use(express.static(path.join(_dirname1, "/frontend/dist")));
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(_dirname1, "/frontend/dist/index.html"));
+// });
+
+// -----------------------
+
 app.get("/api/chat/:id", (req, res) => {
   const chat = chats.find((chat) => chat._id === req.params.id);
   if (!chat) return res.status(404).send({ message: "Chat not found" });
@@ -46,7 +61,7 @@ const vercelURL = "https://chat-sync.vercel.app";
 
 const io = new SocketIOServer(server, {
   cors: {
-    origin: url,
+    origin: vercelURL,
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   },
   pingInterval: 60000,
@@ -89,6 +104,3 @@ io.on("connection", (socket) => {
     console.log("A user disconnected");
   });
 });
-
-// Export the server and io instance
-export { server, io };
