@@ -15,7 +15,7 @@ const app = express();
 // middlewares
 app.use(
   cors({
-    origin: "https://chat-sync.vercel.app/",
+    origin: "*",
     credentials: true,
   })
 );
