@@ -12,14 +12,13 @@ import {
   useStatStyles,
 } from "@chakra-ui/react";
 import { useToast } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import PersonIcon from "@mui/icons-material/Person";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import { API_URL } from "../../context/ChatProvider";
-// import { API_URL } from "../../context/ChatProvider";
+import { API_URL, ChatState } from "../../context/ChatProvider";
 
 const Login = () => {
   const toast = useToast();
@@ -30,6 +29,7 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const { user, setUser } = ChatState();
   const handleSubmit = async () => {
     setLoading(true);
     if (!loginformData.email || !loginformData.password) {
@@ -44,7 +44,7 @@ const Login = () => {
       return;
     } else {
       try {
-        const res = axios.post(
+        const res = await axios.post(
           API_URL + "/api/user/login",
           { ...loginformData },
           {
@@ -54,21 +54,35 @@ const Login = () => {
           }
         );
         toast({
-          title: "Logged In Succesfully!!",
+          title: "Logged In Successfully!!",
           status: "sucess",
           duration: 2500,
           isClosable: true,
           position: "bottom",
         });
-        localStorage.setItem("userInfo", JSON.stringify((await res).data));
+        setUser(localStorage.setItem("userInfo", JSON.stringify(res.data)));
         setLoading(false);
-        navigate("/chats");
-        console.log((await res).data);
+        // navigate("/chats");
+        window.location.reload();
+        console.log(res.data);
       } catch (err) {
         console.log(err);
+        toast({
+          title: "Error",
+          description: "Invalid Credentials",
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+        });
+        setLoading(false);
       }
     }
   };
+  useEffect(() => {
+    if (user) {
+      navigate("/chats");
+    }
+  }, [user]);
 
   return (
     <VStack>

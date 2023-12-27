@@ -10,7 +10,7 @@ const Loader = ({ scaleFactor = 1 }) => {
       alignItems="center"
       mt={"4"}
     >
-      <Spinner size={"lg"} color="blue.500" />
+      <Spinner size={"xl"} color="blue.500" />
     </Box>
   );
 };

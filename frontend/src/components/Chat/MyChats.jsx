@@ -59,9 +59,9 @@ const MyChats = ({ fetchAgain }) => {
         bg={theme ? "#ebe5dd" : "blackAlpha.100"}
         color={theme ? "black" : "gray.200"}
         w={["100%", "30%"]}
-        p={3}
+        p={[0, 3]}
         height={"97%"}
-        ml={2}
+        ml={[0, 2]}
         borderRadius={"20px"}
         flex={1}
       >

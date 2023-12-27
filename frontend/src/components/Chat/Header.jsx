@@ -38,14 +38,14 @@ const Header = () => {
       <SearchDrawer />
       <Box zIndex={3}>
         {/* <Text>ChatSync</Text> */}
-        <Image src={logo} alt="Chat Sync" width={["55px", "90px"]} />
+        <Image src={logo} alt="Chat Sync" width={["65px", "90px"]} />
       </Box>
       <Menu>
         <MenuButton
           as={IconButton}
           aria-label="Options"
           icon={
-            <Avatar size={["xs", "sm"]} name={user?.name} src={user?.pic} />
+            <Avatar size={["sm", "sm"]} name={user?.name} src={user?.pic} />
           }
           variant="none"
           rightIcon={<ChevronDownIcon />}

@@ -15,7 +15,6 @@ import {
 import React from "react";
 
 const ProfileModal = ({ user, children, theme }) => {
-  console.log(children);
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>

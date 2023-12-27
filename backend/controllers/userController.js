@@ -11,6 +11,7 @@ import { emailValidator } from "../utils/emailValidator.js";
 const loginController = expressAsyncHandler(async (req, res) => {
   const { email, password } = req.body;
   try {
+    //get user info
     let user = await User.findOne({ email });
     if (!user) {
       return res.status(401).json("Invalid credentials");

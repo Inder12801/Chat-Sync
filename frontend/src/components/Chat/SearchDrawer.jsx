@@ -77,7 +77,7 @@ const SearchDrawer = () => {
     try {
       setLoadingChat(true);
       const res = await axios.post(API_URL + "/api/chat", { userId }, config);
-      console.log(res.data);
+      // console.log(res.data);
       if (!chats.find((c) => c._id === res.data._id))
         setChats([res.data, ...chats]);
       setSelectedChat(res.data);

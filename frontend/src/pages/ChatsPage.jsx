@@ -10,14 +10,21 @@ import Header from "../components/Chat/Header";
 import Loader from "../components/Loader/Loader";
 import { ChatState } from "../context/ChatProvider";
 import ChatLoader from "../components/Loader/ChatLoader";
+import { useNavigate } from "react-router-dom";
 
 const ChatsPage = () => {
   const { user, theme } = ChatState();
   const [fetchAgain, setFetchAgain] = useState(false);
+  const [loggedUser, setLoggedUser] = useState(
+    JSON.parse(localStorage.getItem("userInfo"))
+  );
   console.log(user);
+  const navigate = useNavigate();
   useEffect(() => {
-    if (!user) {
-      return;
+    if (!loggedUser) {
+      navigate("/");
+    } else {
+      navigate("/chats");
     }
   }, [user]);
   return (
