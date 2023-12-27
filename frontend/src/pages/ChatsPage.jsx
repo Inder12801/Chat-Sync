@@ -9,16 +9,21 @@ import SearchDrawer from "../components/Chat/SearchDrawer";
 import Header from "../components/Chat/Header";
 import Loader from "../components/Loader/Loader";
 import { ChatState } from "../context/ChatProvider";
+import ChatLoader from "../components/Loader/ChatLoader";
 
 const ChatsPage = () => {
   const { user, theme } = ChatState();
   const [fetchAgain, setFetchAgain] = useState(false);
   console.log(user);
-  useEffect(() => {}, [user]);
+  useEffect(() => {
+    if (!user) {
+      return;
+    }
+  }, [user]);
   return (
     <>
       {!user ? (
-        <Loader />
+        <ChatLoader />
       ) : (
         <Box
           width={["100%", "90%"]}

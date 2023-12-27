@@ -31,10 +31,10 @@ const ChatProvider = ({ children }) => {
   const checkUser = async () => {
     const userInfo = await JSON.parse(localStorage.getItem("userInfo"));
     setUser(userInfo);
-    if (!userInfo) {
-      navigate("/");
-      return;
-    }
+    // if (!userInfo) {
+    //   navigate("/");
+    //   return;
+    // }
   };
   useEffect(() => {
     checkUser();

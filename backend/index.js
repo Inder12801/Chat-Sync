@@ -37,12 +37,13 @@ app.use("/api/chat", chatRoute);
 app.use("/api/message", messageRoute);
 
 // ----------------------
-
-// const _dirname1 = path.resolve();
-// app.use(express.static(path.join(_dirname1, "/frontend/dist")));
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(_dirname1, "/frontend/dist/index.html"));
-// });
+if (process.env.NODE_ENV === "production") {
+  const _dirname1 = path.resolve();
+  app.use(express.static(path.join(_dirname1, "/frontend/dist")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(_dirname1, "/frontend/dist/index.html"));
+  });
+}
 
 // -----------------------
 
@@ -61,7 +62,7 @@ const vercelURL = "https://chat-sync.vercel.app/";
 
 const io = new SocketIOServer(server, {
   cors: {
-    origin: vercelURL,
+    origin: url,
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   },
   pingInterval: 60000,

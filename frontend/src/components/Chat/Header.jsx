@@ -24,12 +24,16 @@ const Header = () => {
       w={"100%"}
       justifyContent={"space-between"}
       alignItems={"center"}
-      bg={theme ? "#ebe5e5" : "blackAlpha.100"}
+      bg={theme ? "#ebe5e5" : "blackAlpha.500"}
+      blur={
+        theme
+          ? "blur(0px)"
+          : "blur(10px) saturate(100%) contrast(45%) brightness(130%)"
+      }
       color={theme ? "black" : "gray.200"}
       p={"4px 10px"}
       borderRadius={"0px 20px 0 0px"}
-      boxShadow="md"
-      // className="div-shadow"
+      boxShadow={["md"]}
     >
       <SearchDrawer />
       <Box zIndex={3}>

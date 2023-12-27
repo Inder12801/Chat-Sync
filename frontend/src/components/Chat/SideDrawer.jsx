@@ -56,6 +56,7 @@ const SideDrawer = () => {
   };
   const logoutHandler = () => {
     localStorage.removeItem("userInfo");
+    setUser(null);
     navigate("/");
   };
   const getSender = (loggedUser, users) => {

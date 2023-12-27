@@ -7,6 +7,7 @@ import { ChatState } from "./context/ChatProvider";
 
 function App() {
   const { user, theme } = ChatState();
+
   return (
     <div className={!theme ? "dark-app" : "app"}>
       <Routes>

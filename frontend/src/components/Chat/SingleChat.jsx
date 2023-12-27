@@ -40,6 +40,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     notifications,
     setNotifications,
     showMyChats,
+    setShowMyChats,
     theme,
   } = ChatState();
 
@@ -202,12 +203,13 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 onClick={() => {
                   setSelectedChat(null);
                   setFetchAgain(!fetchAgain);
+                  setShowMyChats(!showMyChats);
                 }}
                 icon={
                   <AiOutlineArrowLeft bgColor={theme ? "white" : "gray.200"} />
                 }
                 borderRadius={"50%"}
-                mr={"10px"}
+                mr={["10px"]}
                 variant={theme ? "solid" : "none"}
               />
               {!selectedChat.isGroupChat ? (
@@ -338,22 +340,24 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           w={"100%"}
           height={"100%"}
           display={[showMyChats ? "none" : "flex", "flex"]}
-          flexDirection={"row"}
+          flexDirection={["column", "row"]}
           justifyContent={"center"}
           alignItems={"center"}
         >
-          <Lottie
-            animationData={chatGif}
-            loop={true}
-            style={{
-              width: "10vw",
-            }}
-          />
+          <Box width={["25%", "8%"]}>
+            <Lottie
+              animationData={chatGif}
+              loop={true}
+              style={{
+                width: "100%",
+              }}
+            />
+          </Box>
 
           <Text
             color={theme ? "black" : "gray.200"}
             fontFamily={"Poppins"}
-            fontSize={"2vw"}
+            fontSize={["5vw", "2vw"]}
             fontWeight={500}
             ml={2}
           >

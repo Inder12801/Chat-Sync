@@ -18,6 +18,7 @@ const MyChats = ({ fetchAgain }) => {
     chats,
     setChats,
     showMyChats,
+    setShowMyChats,
     theme,
   } = ChatState();
   const [loggedUser, setLoggedUser] = useState(
@@ -99,9 +100,10 @@ const MyChats = ({ fetchAgain }) => {
               {chats.map((chat, index) => {
                 return (
                   <Box
-                    onClick={() =>
-                      setSelectedChat(selectedChat === chat ? null : chat)
-                    }
+                    onClick={() => {
+                      setSelectedChat(selectedChat === chat ? null : chat);
+                      setShowMyChats(!showMyChats);
+                    }}
                     cursor={"pointer"}
                     bg={
                       selectedChat === chat
