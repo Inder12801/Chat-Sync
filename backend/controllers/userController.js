@@ -103,7 +103,7 @@ const allUsers = expressAsyncHandler(async (req, res) => {
       _id: { $ne: req.user._id },
     })
     .select("-password");
-  res.send(users);
+  res.json(users);
 });
 
 export { loginController, registerController, allUsers };

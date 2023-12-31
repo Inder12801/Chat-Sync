@@ -31,7 +31,7 @@ const ScrollableChat = ({ messages, setMessages, loggedInUser, theme }) => {
   };
 
   return (
-    <Box width={"100%"}>
+    <Box width={"100%"} height={""}>
       {messages.map((message, index) => (
         <Box
           key={index}

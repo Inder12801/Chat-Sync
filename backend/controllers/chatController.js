@@ -66,7 +66,7 @@ export const fetchChats = expressAsyncHandler(async (req, res) => {
       path: "latestMessage.sender",
       select: "name email pic",
     });
-    res.send(chats);
+    res.json(chats);
   } catch (error) {
     console.log(error);
   }

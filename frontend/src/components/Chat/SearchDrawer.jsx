@@ -1,11 +1,9 @@
 import {
   Box,
-  Button,
   Drawer,
   DrawerBody,
   DrawerCloseButton,
   DrawerContent,
-  DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
   IconButton,
@@ -55,9 +53,12 @@ const SearchDrawer = () => {
     try {
       setLoading(true);
 
-      const res = await axios.get(`/api/user?search=${search}`, config);
+      const res = await axios.get(
+        API_URL + `/api/user?search=${search}`,
+        config
+      );
       console.log(res.data);
-      setSearchResults(res.data);
+      setSearchResults([...res.data]);
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -133,7 +134,7 @@ const SearchDrawer = () => {
         placement="left"
         onClose={() => {
           onClose();
-          setSearchResults([]);
+          // setSearchResults(null);
         }}
         finalFocusRef={btnRef}
       >

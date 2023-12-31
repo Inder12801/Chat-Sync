@@ -8,7 +8,7 @@ const ChatBox = ({ fetchAgain, setFetchAgain }) => {
   return (
     <Box
       // width={"69%"}
-      p={3}
+      p={[0, 3]}
       // m={2}
       height={["100%", "100%"]}
       borderRadius={"20px"}

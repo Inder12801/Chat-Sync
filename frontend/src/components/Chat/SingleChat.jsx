@@ -260,14 +260,14 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           </Box>
           <Box
             w={"100%"}
-            height={"91%"}
+            height={"96%"}
             display={"flex"}
             flexDirection={"column"}
             alignItems={"center"}
             justifyContent={"space-between"}
             bg={theme ? "#ebe5e5" : "blackAlpha.100"}
             color={theme ? "black" : "gray.200"}
-            borderRadius={"20px"}
+            borderRadius={["0", "20px"]}
             p={3}
             mt={3}
           >
@@ -275,7 +275,13 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
               <ChatLoader />
             ) : (
               <Box
-                style={{ width: "100%", bgColor: "green", overflow: "auto" }}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  bgColor: "green",
+                  overflow: "auto",
+                }}
+                height={"100%"}
               >
                 <ScrollableChat
                   loggedInUser={user}

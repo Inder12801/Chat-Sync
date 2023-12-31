@@ -59,10 +59,10 @@ const MyChats = ({ fetchAgain }) => {
         bg={theme ? "#ebe5dd" : "blackAlpha.100"}
         color={theme ? "black" : "gray.200"}
         w={["100%", "30%"]}
-        p={[0, 3]}
-        height={"97%"}
+        p={[3, 3]}
+        height={["100%", "97%"]}
         ml={[0, 2]}
-        borderRadius={"20px"}
+        borderRadius={["0px", "20px"]}
         flex={1}
       >
         <Box
