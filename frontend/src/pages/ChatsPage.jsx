@@ -18,7 +18,7 @@ const ChatsPage = () => {
   const [loggedUser, setLoggedUser] = useState(
     JSON.parse(localStorage.getItem("userInfo"))
   );
-  console.log(user);
+  // console.log(user);
   const navigate = useNavigate();
   useEffect(() => {
     if (!loggedUser) {

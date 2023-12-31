@@ -111,7 +111,7 @@ const GroupChatModal = ({ children }) => {
         },
         config
       );
-      console.log(res.data);
+      // console.log(res.data);
       setChats([res.data, ...chats]);
       setLoading(false);
       onClose();

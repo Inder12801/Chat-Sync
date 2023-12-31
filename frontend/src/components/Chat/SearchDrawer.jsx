@@ -57,7 +57,7 @@ const SearchDrawer = () => {
         API_URL + `/api/user?search=${search}`,
         config
       );
-      console.log(res.data);
+      // console.log(res.data);
       setSearchResults([...res.data]);
       setLoading(false);
     } catch (error) {

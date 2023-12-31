@@ -37,7 +37,7 @@ const MyChats = ({ fetchAgain }) => {
     try {
       let res = await axios.get(API_URL + "/api/chat", config);
       setChats(res.data);
-      console.log(res.data);
+      // console.log(res.data);
     } catch (error) {
       console.log(error);
     }

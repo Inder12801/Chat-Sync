@@ -11,8 +11,8 @@ const ScrollableChat = ({ messages, setMessages, loggedInUser, theme }) => {
   const deleteMessage = async (messageId) => {
     if (messageId === "") return;
     try {
-      console.log("Clicked");
-      console.log(messageId);
+      // console.log("Clicked");
+      // console.log(messageId);
       const config = {
         headers: {
           "Content-Type": "application/json",
@@ -24,7 +24,7 @@ const ScrollableChat = ({ messages, setMessages, loggedInUser, theme }) => {
         config
       );
       setMessages(messages.filter((message) => message._id !== messageId));
-      console.log(res.data);
+      // console.log(res.data);
     } catch (error) {
       console.log(error);
     }

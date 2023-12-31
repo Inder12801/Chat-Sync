@@ -40,7 +40,6 @@ const UpdateGroupChatModal = ({
   );
   const toast = useToast();
 
-  const handleDelete = () => {};
   const handleRename = async () => {
     if (!groupChatName) return;
     try {
@@ -104,7 +103,7 @@ const UpdateGroupChatModal = ({
   };
   const handleAddUser = async (searchedUser) => {
     // write a check if the selected user is already in he group
-    console.log(searchedUser);
+    // console.log(searchedUser);
     if (!searchedUser) return;
     let usersInGroup = [...selectedChat.users];
     if (usersInGroup.find((u) => u._id === searchedUser?._id)) {
@@ -145,7 +144,7 @@ const UpdateGroupChatModal = ({
         { userId: searchedUser._id, chatId: selectedChat._id },
         config
       );
-      console.log(res.data);
+      // console.log(res.data);
       setLoading(false);
       setSelectedChat(res.data);
       setFetchAgain(!fetchAgain);
@@ -188,7 +187,7 @@ const UpdateGroupChatModal = ({
         { userId: userToDeleteFromGroup._id, chatId: selectedChat._id },
         config
       );
-      console.log(res.data);
+      // console.log(res.data);
       setLoading(false);
       setSelectedChat(res.data);
       setFetchAgain(!fetchAgain);
@@ -232,7 +231,7 @@ const UpdateGroupChatModal = ({
         { userId: loggedUser._id, chatId: selectedChat._id },
         config
       );
-      console.log(res.data);
+      // console.log(res.data);
       setLoading(false);
       setSelectedChat(res.data);
       setFetchAgain(!fetchAgain);
