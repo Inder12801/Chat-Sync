@@ -90,7 +90,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   };
 
   const sendMessage = async (e) => {
-    console.log(e);
+    // console.log(e);
     if (e.type === "click" || e.key === "Enter") {
       if (newMessage && newMessage !== "undefined") {
         try {
@@ -177,7 +177,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
       }
     });
   });
-  console.log(notifications);
+  // console.log(notifications);
 
   return (
     <>
