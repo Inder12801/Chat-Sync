@@ -144,7 +144,7 @@ const Login = () => {
         >
           Login
         </Button>
-        <Tooltip
+        {/* <Tooltip
           hasArrow
           label="Get Guest User Credentials"
           borderRadius={"20px"}
@@ -162,7 +162,7 @@ const Login = () => {
               });
             }}
           />
-        </Tooltip>
+        </Tooltip> */}
       </Box>
     </VStack>
   );
