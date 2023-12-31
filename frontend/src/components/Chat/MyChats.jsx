@@ -7,6 +7,7 @@ import ChatLoading from "./ChatLoading";
 import GroupChatModal from "../GroupChat/GroupChatModal";
 import { motion } from "framer-motion";
 import { API_URL, ChatState } from "../../context/ChatProvider";
+import { MdGroupAdd } from "react-icons/md";
 
 const MyChats = ({ fetchAgain }) => {
   const toast = useToast();
@@ -72,19 +73,20 @@ const MyChats = ({ fetchAgain }) => {
           w={"100%"}
           mb={"15px"}
         >
-          <Text fontSize={["sm", "1.3vw"]} fontWeight={"500"}>
+          <Text fontSize={["sm", "1.1vw"]} fontWeight={"600"}>
             My Chats
           </Text>
           <GroupChatModal>
             <Button
               bg={theme ? "#ebe5e5" : "blackAlpha.100"}
               color={theme ? "black" : "gray.200"}
-              leftIcon={<AddIcon />}
-              fontSize={["x-small", "0.8vw"]}
+              leftIcon={[<MdGroupAdd size={"20px"} />]}
+              fontSize={["xs", "0.8vw"]}
               variant={"none"}
               className={theme ? "hover-effect" : "hover-effect-dark"}
+              p={1}
             >
-              New Group Chat
+              <Text display={["none", "inline"]}>New Group Chat</Text>
             </Button>
           </GroupChatModal>
         </Box>
@@ -139,7 +141,7 @@ const MyChats = ({ fetchAgain }) => {
                       <Text
                         fontFamily={"Poppins"}
                         fontWeight={"500"}
-                        fontSize={["xs", "1.1vw"]}
+                        fontSize={["lg", "1.1vw"]}
                       >
                         {getSender(loggedUser, chat.users)}
                       </Text>
@@ -147,7 +149,7 @@ const MyChats = ({ fetchAgain }) => {
                       <Text
                         fontFamily={"Poppins"}
                         fontWeight={"500"}
-                        fontSize={["xs", "1.1vw"]}
+                        fontSize={["lg", "1.1vw"]}
                       >
                         {chat.chatName}
                       </Text>

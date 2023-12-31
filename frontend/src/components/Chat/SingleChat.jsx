@@ -185,12 +185,14 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         <>
           <Box
             w={"100%"}
+            // height={"100%"}
             display={"flex"}
             alignItems={"center"}
             justifyContent={"space-between"}
             bg={theme ? "white" : "blackAlpha.200"}
             color={theme ? "black" : "gray.200"}
             borderRadius={[0, "20px"]}
+            p={[1]}
           >
             <Text
               fontSize="lg"
@@ -236,7 +238,10 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             </Text>
             {/* // write a menu with three dots iconButton on clicking of what a
             menu open which has an option of edit Group */}
-            <Menu>
+            <Menu
+              bg={theme ? "white" : "gray.900"}
+              color={theme ? "black" : "gray.200"}
+            >
               <MenuButton
                 display={selectedChat.isGroupChat ? "inline" : "none"}
                 p={0}
@@ -245,8 +250,15 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 borderRadius={"50%"}
                 variant={"none"}
               />
-              <MenuList>
-                <MenuItem>
+              <MenuList
+                bg={theme ? "white" : "gray.900"}
+                color={theme ? "black" : "gray.200"}
+                border={"none"}
+              >
+                <MenuItem
+                  bg={theme ? "white" : "gray.900"}
+                  color={theme ? "black" : "gray.200"}
+                >
                   <Text onClick={onOpen}>
                     <UpdateGroupChatModal
                       fetchAgain={fetchAgain}
@@ -260,16 +272,17 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           </Box>
           <Box
             w={"100%"}
-            height={"92%"}
+            height={["92%", "91%"]}
             display={"flex"}
             flexDirection={"column"}
+            flex={1}
             alignItems={"center"}
             justifyContent={"space-between"}
             bg={theme ? "#ebe5e5" : "blackAlpha.100"}
             color={theme ? "black" : "gray.200"}
             borderRadius={["0", "20px"]}
             p={3}
-            mt={[0, 3]}
+            mt={[1, 3]}
           >
             {loading ? (
               <ChatLoader />
@@ -277,11 +290,9 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
               <Box
                 style={{
                   width: "100%",
-                  height: "100%",
                   bgColor: "green",
                   overflow: "auto",
                 }}
-                height={"100%"}
               >
                 <ScrollableChat
                   loggedInUser={user}

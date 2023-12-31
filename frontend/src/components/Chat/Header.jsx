@@ -24,7 +24,7 @@ const Header = () => {
       w={"100%"}
       justifyContent={"space-between"}
       alignItems={"center"}
-      bg={theme ? "#ebe5e5" : "blackAlpha.500"}
+      bg={theme ? "#ebe5e5" : "blackAlpha.100"}
       blur={
         theme
           ? "blur(0px)"
@@ -32,7 +32,7 @@ const Header = () => {
       }
       color={theme ? "black" : "gray.200"}
       p={"4px 10px"}
-      borderRadius={"0px 20px 0 0px"}
+      borderRadius={[0, "0px 20px 0 0px"]}
       boxShadow={["md"]}
     >
       <SearchDrawer />

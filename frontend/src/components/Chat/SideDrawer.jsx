@@ -63,11 +63,8 @@ const SideDrawer = () => {
     return users[0]._id === loggedUser._id ? users[1].name : users[0].name;
   };
   const updateUserTheme = () => {
-    let newUsers = JSON.parse(localStorage.getItem("userInfo"));
-    newUsers.theme = !newUsers.theme;
-    localStorage.setItem("userInfo", JSON.stringify(newUsers));
-    setTheme(newUsers.theme);
-    setUser({ ...user, theme: !user.theme });
+    setTheme(!theme);
+    localStorage.setItem("theme", JSON.stringify(theme));
   };
 
   return (

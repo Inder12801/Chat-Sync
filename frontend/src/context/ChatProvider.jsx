@@ -10,7 +10,9 @@ const ChatProvider = ({ children }) => {
   const [chats, setChats] = useState([]);
   const [notifications, setNotifications] = useState([]);
   const [showMyChats, setShowMyChats] = useState(false);
-  const [theme, setTheme] = useState(true); // false - DarkMode
+  const [theme, setTheme] = useState(
+    JSON.parse(localStorage.getItem("theme")) || true
+  ); // false - DarkMode
   const navigate = useNavigate();
   const value = {
     user,

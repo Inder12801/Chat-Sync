@@ -6,7 +6,7 @@ import ChatsPage from "./pages/ChatsPage";
 import { ChatState } from "./context/ChatProvider";
 
 function App() {
-  const { user, theme } = ChatState();
+  const { theme } = ChatState();
 
   return (
     <div className={!theme ? "dark-app" : "app"}>

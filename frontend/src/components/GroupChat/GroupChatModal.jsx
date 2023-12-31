@@ -203,7 +203,11 @@ const GroupChatModal = ({ children }) => {
             )}
           </ModalBody>
           <ModalFooter>
-            <Button variant={"ghost"} onClick={() => handleSubmit()}>
+            <Button
+              variant={"none"}
+              color={theme ? "black" : "white"}
+              onClick={() => handleSubmit()}
+            >
               Create Chat
             </Button>
           </ModalFooter>

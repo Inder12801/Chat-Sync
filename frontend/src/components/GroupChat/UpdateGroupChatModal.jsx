@@ -251,7 +251,9 @@ const UpdateGroupChatModal = ({
 
   return (
     <div>
-      <Text onClick={onOpen}>Edit Group</Text>
+      <Text onClick={onOpen} color={theme ? "black" : "white"}>
+        Edit Group
+      </Text>
 
       <Modal isOpen={isOpen} onClose={onClose} isCentered size={["xs", "md"]}>
         <ModalOverlay />
