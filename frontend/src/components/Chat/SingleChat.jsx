@@ -191,7 +191,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             bg={theme ? "white" : "blackAlpha.200"}
             color={theme ? "black" : "gray.200"}
             borderRadius={[0, "20px"]}
-            p={3}
           >
             <Text
               fontSize="lg"
@@ -270,7 +269,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             color={theme ? "black" : "gray.200"}
             borderRadius={["0", "20px"]}
             p={3}
-            mt={3}
+            mt={[0, 3]}
           >
             {loading ? (
               <ChatLoader />
