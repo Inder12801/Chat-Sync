@@ -190,7 +190,8 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             justifyContent={"space-between"}
             bg={theme ? "white" : "blackAlpha.200"}
             color={theme ? "black" : "gray.200"}
-            borderRadius={"20px"}
+            borderRadius={[0, "20px"]}
+            p={3}
           >
             <Text
               fontSize="lg"
@@ -260,7 +261,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           </Box>
           <Box
             w={"100%"}
-            height={"96%"}
+            height={"92%"}
             display={"flex"}
             flexDirection={"column"}
             alignItems={"center"}
