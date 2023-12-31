@@ -310,7 +310,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 //   borderColor: "pink.400",
                 // }}
                 bgColor={theme ? "gray.300" : "gray.700"}
-                opacity={theme ? "1" : "0.4"}
                 borderColor={"transparent"}
                 focusBorderColor="pink.400"
                 borderRadius={"20px"}

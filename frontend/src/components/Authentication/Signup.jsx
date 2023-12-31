@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import CloseIcon from "@mui/icons-material/Close";
 import { useToast } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { saveImageToCloudinary } from "../../config/saveImageToCloudinary.js";
 import addImageIcon from "../../assets/addImageIcon.png";
@@ -19,7 +19,7 @@ import addImageIcon from "../../assets/addImageIcon.png";
 import { useNavigate } from "react-router-dom";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import { API_URL } from "../../context/ChatProvider.jsx";
+import { API_URL, ChatState } from "../../context/ChatProvider.jsx";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -32,6 +32,7 @@ const Signup = () => {
     confirmPassword: "",
     pic: "",
   });
+  const { user, setUser } = ChatState();
   const toast = useToast();
 
   const passwordChecker = () => {
@@ -173,14 +174,20 @@ const Signup = () => {
         isClosable: true,
         position: "bottom",
       });
-      localStorage.setItem("userInfo", JSON.stringify(res.data));
+      setUser(localStorage.setItem("userInfo", JSON.stringify(res.data)));
+      // navigate("/chats");
+      window.location.reload();
       console.log(res.data);
       setLoading(false);
-      navigate("/chats");
     } catch (err) {
       console.log(err);
     }
   };
+  useEffect(() => {
+    if (user) {
+      navigate("/chats");
+    }
+  }, [user]);
 
   return (
     <VStack>

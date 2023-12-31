@@ -114,7 +114,7 @@ const MyChats = ({ fetchAgain }) => {
                         ? "#ebe5e5"
                         : "blackAlpha.100"
                     }
-                    opacity={theme ? "1" : "0.8"}
+                    // opacity={theme ? "1" : "0.8"}
                     color={
                       selectedChat === chat
                         ? "white"
