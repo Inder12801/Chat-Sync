@@ -58,11 +58,11 @@ const server = app.listen(5000, () => {
 });
 
 const url = "http://localhost:5173";
-const vercelURL = "https://chat-sync.vercel.app/";
+const vercelURL = "https://chat-sync.vercel.app";
 
 const io = new SocketIOServer(server, {
   cors: {
-    origin: vercelURL,
+    origin: "https://chat-sync-server.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   },
   pingInterval: 60000,
