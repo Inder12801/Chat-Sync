@@ -177,7 +177,7 @@ const Signup = () => {
       setUser(localStorage.setItem("userInfo", JSON.stringify(res.data)));
       // navigate("/chats");
       window.location.reload();
-      console.log(res.data);
+      // console.log(res.data);
       setLoading(false);
     } catch (err) {
       console.log(err);

@@ -10,7 +10,7 @@ export const saveImageToCloudinary = async (pics) => {
     });
     const cloudData = await res.json();
     const picUrl = await cloudData.url.toString();
-    console.log(typeof picUrl);
+    // console.log(typeof picUrl);
     return picUrl;
   } catch (error) {
     console.log(error);
