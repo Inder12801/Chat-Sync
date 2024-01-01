@@ -144,7 +144,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     }, TYPING_TIMER_LENGTH);
   };
   useEffect(() => {
-    socket = io(ENDPOINT);
+    socket = io(API_URL);
     socket.emit("setup", loggedInUser);
     socket.on("connected", () => {
       setSocketConnected(true);

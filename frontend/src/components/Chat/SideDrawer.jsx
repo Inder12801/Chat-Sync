@@ -1,5 +1,5 @@
 // SideDrawer.js
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Button,
@@ -66,6 +66,8 @@ const SideDrawer = () => {
     setTheme(!theme);
     localStorage.setItem("theme", JSON.stringify(theme));
   };
+
+  useEffect(() => {}, [notifications]);
 
   return (
     <Box
