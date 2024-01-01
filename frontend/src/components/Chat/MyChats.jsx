@@ -104,7 +104,7 @@ const MyChats = ({ fetchAgain }) => {
                   <Box
                     onClick={() => {
                       setSelectedChat(selectedChat === chat ? null : chat);
-                      setShowMyChats(!showMyChats);
+                      // setShowMyChats(!showMyChats);
                     }}
                     cursor={"pointer"}
                     bg={

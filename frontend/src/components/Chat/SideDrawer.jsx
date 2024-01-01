@@ -128,6 +128,13 @@ const SideDrawer = () => {
                 bgColor={"#adacac"}
               >
                 <Button
+                  bgColor={
+                    notifications.length > 0
+                      ? "red"
+                      : theme
+                      ? "black"
+                      : "gray.200"
+                  }
                   leftIcon={
                     <Icon
                       as={AiOutlineBell}
