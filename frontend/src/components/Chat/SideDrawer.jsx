@@ -128,14 +128,6 @@ const SideDrawer = () => {
                 bgColor={"#adacac"}
               >
                 <Button
-                  bgColor={
-                    notifications.length > 0
-                      ? "red"
-                      : theme
-                      ? "transparent"
-                      : "gray.200"
-                  }
-                  borderRadius={"50%"}
                   p={0}
                   variant="none"
                   leftIcon={
