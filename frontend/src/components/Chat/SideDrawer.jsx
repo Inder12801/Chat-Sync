@@ -135,6 +135,8 @@ const SideDrawer = () => {
                       ? "black"
                       : "gray.200"
                   }
+                  p={0}
+                  variant="none"
                   leftIcon={
                     <Icon
                       as={AiOutlineBell}
