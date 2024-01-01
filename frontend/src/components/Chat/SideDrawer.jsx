@@ -132,9 +132,10 @@ const SideDrawer = () => {
                     notifications.length > 0
                       ? "red"
                       : theme
-                      ? "black"
+                      ? "transparent"
                       : "gray.200"
                   }
+                  borderRadius={"50%"}
                   p={0}
                   variant="none"
                   leftIcon={
@@ -150,7 +151,6 @@ const SideDrawer = () => {
                       fontSize={"20px"}
                     />
                   }
-                  variant="none"
                 >
                   {isExpanded && <Text>Notifications</Text>}
                 </Button>
