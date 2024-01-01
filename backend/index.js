@@ -15,7 +15,7 @@ const app = express();
 // middlewares
 app.use(
   cors({
-    origin: "https://chat-sync.vercel.app",
+    origin: "*",
     credentials: true,
   })
 );
@@ -62,7 +62,7 @@ const vercelURL = "https://chat-sync.vercel.app";
 
 const io = new SocketIOServer(server, {
   cors: {
-    origin: "https://chat-sync.vercel.app/",
+    origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   },
   pingInterval: 60000,
