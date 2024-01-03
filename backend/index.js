@@ -9,6 +9,10 @@ import chatRoute from "./routes/chatRoute.js";
 import messageRoute from "./routes/messageRoute.js";
 import cors from "cors";
 
+const url = process.env.URL;
+const vercelURL = process.env.VERCEL_URL;
+const port = process.env.PORT;
+
 // creating a server
 const app = express();
 
@@ -21,7 +25,6 @@ app.use(
 );
 app.use(express.json());
 dotenv.config();
-// enable cors from url = https://chat-sync.vercel.app
 
 // connect to database
 connectToDB();
@@ -53,12 +56,9 @@ app.get("/api/chat/:id", (req, res) => {
   res.json(chat);
 });
 
-const server = app.listen(5000, () => {
-  console.log("Server is running on port : ", 5000);
+const server = app.listen(port, () => {
+  console.log("Server is running on port : ", port);
 });
-
-const url = "http://localhost:5173";
-const vercelURL = "https://chat-sync.vercel.app";
 
 const io = new SocketIOServer(server, {
   cors: {
