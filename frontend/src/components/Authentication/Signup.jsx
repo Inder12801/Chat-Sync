@@ -127,18 +127,18 @@ const Signup = () => {
       setLoading(false);
       return;
     }
-    // if (!passwordChecker(signupformData.password)) {
-    //   toast({
-    //     title:
-    //       "Password must contain \natleast 6 characters, \n min 1 uppercase, \n min 1 lowercase, \n min 1 number and \n min 1 special character",
-    //     status: "warning",
-    //     duration: 2500,
-    //     isClosable: true,
-    //     position: "bottom-right",
-    //   });
-    //   setLoading(false);
-    //   return;
-    // }
+    if (!passwordChecker(signupformData.password)) {
+      toast({
+        title:
+          "Password must contain \natleast 6 characters, \n min 1 uppercase, \n min 1 lowercase, \n min 1 number and \n min 1 special character",
+        status: "warning",
+        duration: 2500,
+        isClosable: true,
+        position: "bottom-right",
+      });
+      setLoading(false);
+      return;
+    }
     if (!emailValidator()) {
       toast({
         title: "Invalid Email",

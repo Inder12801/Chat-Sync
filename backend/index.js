@@ -1,6 +1,6 @@
 import express from "express";
 import path from "path";
-import { Server as SocketIOServer, Socket } from "socket.io";
+import { Server as SocketIOServer } from "socket.io";
 import { chats } from "./data/dummyData.js";
 import dotenv from "dotenv";
 import { connectToDB } from "./config/connectToDB.js";
