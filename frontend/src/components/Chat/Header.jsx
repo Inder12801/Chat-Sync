@@ -17,7 +17,7 @@ import logo from "../../assets/Chat Sync-Logo-Transparent.png";
 import { ChatState } from "../../context/ChatProvider";
 
 const Header = () => {
-  const { user, theme } = ChatState();
+  const { user, theme, setUser } = ChatState();
   return (
     <Box
       display={"flex"}
@@ -57,7 +57,7 @@ const Header = () => {
             theme ? "1px solid #d8d8d8" : "1px solid rgba(255, 255, 255, 0.1)"
           }
         >
-          <ProfileModal user={user} theme={theme}>
+          <ProfileModal user={user} setUser={setUser} theme={theme}>
             <MenuItem
               display={"flex"}
               textAlign={"center"}
