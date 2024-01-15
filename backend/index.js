@@ -11,7 +11,7 @@ import cors from "cors";
 
 const url = process.env.URL;
 const vercelURL = process.env.VERCEL_URL;
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 
 // creating a server
 const app = express();

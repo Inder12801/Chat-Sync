@@ -6,6 +6,7 @@ import User from "../models/userModel.js";
 import expressAsyncHandler from "express-async-handler";
 import bcrypt from "bcrypt";
 import { emailValidator } from "../utils/emailValidator.js";
+import { ObjectId } from "mongodb";
 
 // Login
 const loginController = expressAsyncHandler(async (req, res) => {
@@ -110,12 +111,9 @@ const updateUser = expressAsyncHandler(async (req, res) => {
   console.log(req.params.id);
   try {
     const { name, pic } = req.body;
-    if (!name || !pic) {
-      res.send(400);
-      throw Error("All necessary input fields have not been filled");
-    }
+
     const user = await User.findOneAndUpdate(
-      { _id: req.params.id },
+      { email: req.params.id },
       { name, pic },
       { new: true }
     );
@@ -130,7 +128,9 @@ const updateUser = expressAsyncHandler(async (req, res) => {
       res.status(400);
       throw new Error("Update Error");
     }
-  } catch (error) {}
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
 });
 
 export { loginController, registerController, allUsers, updateUser };
