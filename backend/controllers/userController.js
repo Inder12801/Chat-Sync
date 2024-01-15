@@ -106,4 +106,31 @@ const allUsers = expressAsyncHandler(async (req, res) => {
   res.json(users);
 });
 
-export { loginController, registerController, allUsers };
+const updateUser = expressAsyncHandler(async (req, res) => {
+  console.log(req.params.id);
+  try {
+    const { name, pic } = req.body;
+    if (!name || !pic) {
+      res.send(400);
+      throw Error("All necessary input fields have not been filled");
+    }
+    const user = await User.findOneAndUpdate(
+      { _id: req.params.id },
+      { name, pic },
+      { new: true }
+    );
+    if (user) {
+      res.status(201).json({
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        pic: user.pic.toString(),
+      });
+    } else {
+      res.status(400);
+      throw new Error("Update Error");
+    }
+  } catch (error) {}
+});
+
+export { loginController, registerController, allUsers, updateUser };
