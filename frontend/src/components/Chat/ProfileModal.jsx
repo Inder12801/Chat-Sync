@@ -61,7 +61,16 @@ const ProfileModal = ({ user, setUser, children, theme }) => {
         { name: updateName, pic: picUrl },
         config
       );
-      setUser({ ...user, ...updatedUser?.data });
+      localStorage.setItem(
+        "userInfo",
+        JSON.stringify({ ...user, ...updatedUser?.data })
+      );
+      setUser(JSON.parse(localStorage.getItem("userInfo")));
+      localStorage.setItem(
+        "userInfo",
+        JSON.stringify({ ...user, ...updatedUser?.data })
+      );
+      console.log("user->", user);
     } catch (error) {
       console.log("error->", error);
     } finally {

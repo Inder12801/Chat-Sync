@@ -174,7 +174,7 @@ const Signup = () => {
         isClosable: true,
         position: "bottom",
       });
-      setUser(localStorage.setItem("userInfo", JSON.stringify(res.data)));
+      // setUser(localStorage.setItem("userInfo", JSON.stringify(res.data)));
       // navigate("/chats");
       // window.location.reload();
       navigate("/verify-email");

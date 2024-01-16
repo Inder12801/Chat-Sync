@@ -3,19 +3,15 @@ import {
   Button,
   FormControl,
   FormLabel,
-  IconButton,
   Input,
   InputGroup,
   InputRightElement,
-  Tooltip,
   VStack,
-  useStatStyles,
 } from "@chakra-ui/react";
 import { useToast } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import PersonIcon from "@mui/icons-material/Person";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { API_URL, ChatState } from "../../context/ChatProvider";
@@ -63,7 +59,6 @@ const Login = () => {
         });
         setUser(localStorage.setItem("userInfo", JSON.stringify(res.data)));
         setLoading(false);
-        // navigate("/chats");
         window.location.reload();
         console.log(res.data);
       } catch (err) {
