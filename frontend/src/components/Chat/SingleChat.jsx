@@ -15,7 +15,6 @@ import {
   useToast,
   Image,
 } from "@chakra-ui/react";
-import { IoChatbubbles } from "react-icons/io5";
 import { AiOutlineArrowLeft, AiOutlineSend } from "react-icons/ai";
 import { CiMenuKebab } from "react-icons/ci";
 import UpdateGroupChatModal from "../GroupChat/UpdateGroupChatModal";
