@@ -176,7 +176,8 @@ const Signup = () => {
       });
       setUser(localStorage.setItem("userInfo", JSON.stringify(res.data)));
       // navigate("/chats");
-      window.location.reload();
+      // window.location.reload();
+      navigate("/verify-email");
       // console.log(res.data);
       setLoading(false);
     } catch (err) {
@@ -186,8 +187,6 @@ const Signup = () => {
   useEffect(() => {
     if (user?.isVerified) {
       navigate("/chats");
-    } else {
-      navigate("/verify-email");
     }
   }, [user]);
 

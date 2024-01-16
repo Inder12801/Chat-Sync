@@ -7,6 +7,7 @@ import expressAsyncHandler from "express-async-handler";
 import bcrypt from "bcrypt";
 import { emailValidator } from "../utils/emailValidator.js";
 import crypto from "crypto";
+import sendEmail from "../utils/sendEmail.js";
 
 // Login
 const loginController = expressAsyncHandler(async (req, res) => {
@@ -79,6 +80,7 @@ const registerController = expressAsyncHandler(async (req, res) => {
       emailToken: crypto.randomBytes(64).toString("hex"),
       pic,
     });
+    sendEmail(user);
     if (user) {
       res.status(201).json({
         _id: user._id,
@@ -174,6 +176,7 @@ const verifyEmail = expressAsyncHandler(async (req, res) => {
         pic: updatedUser?.pic,
         _id: updatedUser?._id,
         isVerified: updatedUser?.isVerified,
+        token: generateToken(updatedUser?._id),
       });
     }
   } catch (error) {

@@ -5,6 +5,7 @@ import axios from "axios";
 import { useToast } from "@chakra-ui/react";
 
 const VerifyEmail = () => {
+  console.log("verify email");
   const { user, setUser } = ChatState();
   const navigate = useNavigate();
   let [searchParams, setSearchParams] = useSearchParams();
@@ -50,7 +51,7 @@ const VerifyEmail = () => {
       }
     };
     verifyEmail();
-  }, [user]);
+  }, []);
   return <div>VerifyEmail</div>;
 };
 
