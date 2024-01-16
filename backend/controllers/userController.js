@@ -6,7 +6,7 @@ import User from "../models/userModel.js";
 import expressAsyncHandler from "express-async-handler";
 import bcrypt from "bcrypt";
 import { emailValidator } from "../utils/emailValidator.js";
-import { ObjectId } from "mongodb";
+import crypto from "crypto";
 
 // Login
 const loginController = expressAsyncHandler(async (req, res) => {
@@ -22,14 +22,22 @@ const loginController = expressAsyncHandler(async (req, res) => {
       if (!isValidPassword) {
         return res.status(401).send("Invalid Password");
       } else {
-        res.status(201);
-        res.json({
-          name: user.name,
-          email: user.email,
-          pic: user.pic,
-          _id: user._id,
-          token: generateToken(user._id),
-        });
+        if (user.isVerified) {
+          res.status(201);
+          res.json({
+            name: user.name,
+            email: user.email,
+            pic: user.pic,
+            _id: user._id,
+            isVerified: user.isVerified,
+            token: generateToken(user._id),
+          });
+        } else {
+          res.status(401).json({
+            message: "Please verify your email",
+            isVerified: user.isVerified,
+          });
+        }
       }
     }
   } catch (err) {
@@ -68,6 +76,7 @@ const registerController = expressAsyncHandler(async (req, res) => {
       name,
       email,
       password: hashedPassword,
+      emailToken: crypto.randomBytes(64).toString("hex"),
       pic,
     });
     if (user) {
@@ -77,6 +86,7 @@ const registerController = expressAsyncHandler(async (req, res) => {
         email: user.email,
         pic: user.pic.toString(),
         token: generateToken(user._id),
+        emailToken: user.emailToken,
       });
     } else {
       res.status(400);
@@ -89,6 +99,7 @@ const registerController = expressAsyncHandler(async (req, res) => {
   // check for all fields
 });
 
+// search user
 const allUsers = expressAsyncHandler(async (req, res) => {
   const keyword = req.query.search
     ? {
@@ -133,4 +144,38 @@ const updateUser = expressAsyncHandler(async (req, res) => {
   }
 });
 
-export { loginController, registerController, allUsers, updateUser };
+// verify email
+
+const verifyEmail = expressAsyncHandler(async (req, res) => {
+  const emailToken = req.body.emailToken;
+  if (!emailToken) {
+    return res.status(400).json({ message: "Email token is missing" });
+  }
+  try {
+    const user = await User.findOne({ emailToken });
+    if (!user) {
+      return res.status(400).json({ message: "Email token is invalid" });
+    } else {
+      user.isVerified = true;
+      user.emailToken = null;
+      await user.save();
+      return res.status(200).res.json({
+        name: user.name,
+        email: user.email,
+        pic: user.pic,
+        _id: user._id,
+        isVerified: user.isVerified,
+      });
+    }
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
+export {
+  loginController,
+  registerController,
+  allUsers,
+  updateUser,
+  verifyEmail,
+};

@@ -4,6 +4,7 @@ import {
   loginController,
   registerController,
   updateUser,
+  verifyEmail,
 } from "../controllers/userController.js";
 import { protect } from "../middlewares/authMiddleware.js";
 
@@ -14,6 +15,8 @@ router.route("/login").post(loginController);
 router.route("/register").post(registerController);
 
 router.route("/").get(protect, allUsers);
+
+router.route("/verify-email").post(verifyEmail);
 
 router.route("/update/:id").put(protect, updateUser);
 

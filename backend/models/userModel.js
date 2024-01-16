@@ -11,10 +11,8 @@ const userModel = mongoose.Schema(
       default:
         "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
     },
-    theme: {
-      type: Boolean,
-      default: true,
-    },
+    isVerified: { type: Boolean, default: false },
+    emailToken: { type: String },
   },
   {
     timestamps: true,

@@ -184,8 +184,10 @@ const Signup = () => {
     }
   };
   useEffect(() => {
-    if (user) {
+    if (user?.isVerified) {
       navigate("/chats");
+    } else {
+      navigate("/verify-email");
     }
   }, [user]);
 

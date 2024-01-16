@@ -51,16 +51,17 @@ const ProfileModal = ({ user, setUser, children, theme }) => {
     }
     try {
       setLoading(true);
-
-      const picUrl = await saveImageToCloudinary(updatePic);
+      let picUrl = user?.pic;
+      if (updatePic !== user?.pic) {
+        picUrl = await saveImageToCloudinary(updatePic);
+      }
       console.log("picUrl->", picUrl);
       const updatedUser = await axios.put(
         `${API_URL}/api/user/update/${user?.email}`,
         { name: updateName, pic: picUrl },
         config
       );
-      console.log(updatedUser);
-      setUser({ ...user, ...updatedUser });
+      setUser({ ...user, ...updatedUser?.data });
     } catch (error) {
       console.log("error->", error);
     } finally {
@@ -68,7 +69,7 @@ const ProfileModal = ({ user, setUser, children, theme }) => {
     }
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {}, [user]);
   if (loading) {
     return <ChatLoader />;
   }
@@ -139,6 +140,8 @@ const ProfileModal = ({ user, setUser, children, theme }) => {
                 mr={3}
                 borderRadius={"20px"}
                 variant={"solid"}
+                bgColor={"cyan.600"}
+                _hover={{ bgColor: "cyan.500" }}
                 onClick={() => {
                   setEditMode(true);
                 }}
@@ -151,6 +154,8 @@ const ProfileModal = ({ user, setUser, children, theme }) => {
                 mr={3}
                 borderRadius={"20px"}
                 variant={"solid"}
+                bgColor={"green.400"}
+                _hover={{ bgColor: "green.300" }}
                 onClick={() => {
                   setEditMode(!editMode);
                   handleUpdateUser();
