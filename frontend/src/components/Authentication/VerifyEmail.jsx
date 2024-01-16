@@ -5,7 +5,7 @@ import axios from "axios";
 import { useToast } from "@chakra-ui/react";
 
 const VerifyEmail = () => {
-  const { user } = ChatState();
+  const { user, setUser } = ChatState();
   const navigate = useNavigate();
   let [searchParams, setSearchParams] = useSearchParams();
   const emailToken = searchParams.get("emailToken");

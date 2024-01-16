@@ -34,8 +34,8 @@ const loginController = expressAsyncHandler(async (req, res) => {
           });
         } else {
           res.status(401).json({
-            error: "Please verify your email",
             isVerified: user.isVerified,
+            message: "Please verify your email",
           });
         }
       }

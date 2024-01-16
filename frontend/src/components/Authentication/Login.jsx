@@ -70,7 +70,7 @@ const Login = () => {
         console.log(err);
         toast({
           title: "Error",
-          description: "Invalid Credentials",
+          description: err.message,
           status: "error",
           duration: 9000,
           isClosable: true,
