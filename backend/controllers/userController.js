@@ -148,23 +148,46 @@ const updateUser = expressAsyncHandler(async (req, res) => {
 
 const verifyEmail = expressAsyncHandler(async (req, res) => {
   const emailToken = req.body.emailToken;
+  console.log(emailToken);
   if (!emailToken) {
     return res.status(400).json({ message: "Email token is missing" });
   }
   try {
-    const user = await User.findOne({ emailToken });
+    const user = await User.findOne({
+      emailToken: emailToken,
+    });
     if (!user) {
       return res.status(400).json({ message: "Email token is invalid" });
     } else {
-      user.isVerified = true;
-      user.emailToken = null;
-      await user.save();
-      return res.status(200).res.json({
-        name: user.name,
-        email: user.email,
-        pic: user.pic,
-        _id: user._id,
-        isVerified: user.isVerified,
+      const updatedUser = await User.findOneAndUpdate(
+        { email: user.email },
+        {
+          isVerified: true,
+          emailToken: null,
+        },
+        { new: true }
+      );
+      console.log("updatedUser->", updatedUser);
+      res.status(200).json({
+        name: updatedUser?.name,
+        email: updatedUser?.email,
+        pic: updatedUser?.pic,
+        _id: updatedUser?._id,
+        isVerified: updatedUser?.isVerified,
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: error.message });
+  }
+});
+const deleteUser = expressAsyncHandler(async (req, res) => {
+  try {
+    const { email } = req.body;
+    const user = await User.findOneAndDelete({ email });
+    if (user) {
+      res.status(201).json({
+        message: "User Deleted",
       });
     }
   } catch (error) {
@@ -177,5 +200,6 @@ export {
   registerController,
   allUsers,
   updateUser,
+  deleteUser,
   verifyEmail,
 };

@@ -1,6 +1,7 @@
 import express from "express";
 import {
   allUsers,
+  deleteUser,
   loginController,
   registerController,
   updateUser,
@@ -15,6 +16,8 @@ router.route("/login").post(loginController);
 router.route("/register").post(registerController);
 
 router.route("/").get(protect, allUsers);
+
+router.route("/delete").post(deleteUser);
 
 router.route("/verify-email").post(verifyEmail);
 
