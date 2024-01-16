@@ -33,19 +33,15 @@ const loginController = expressAsyncHandler(async (req, res) => {
             token: generateToken(user._id),
           });
         } else {
-          res.status(401).json(
-            {
-              isVerified: user.isVerified,
-            },
-            {
-              message: "Please verify email",
-            }
-          );
+          res.status(401).json({
+            message: "Please verify email",
+          });
         }
       }
     }
   } catch (err) {
     console.log(err);
+    res.status(500).json({ message: err.message });
   }
 });
 
