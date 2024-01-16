@@ -70,7 +70,7 @@ const Login = () => {
         console.log(err);
         toast({
           title: "Error",
-          description: err.message,
+          description: err.name,
           status: "error",
           duration: 9000,
           isClosable: true,
