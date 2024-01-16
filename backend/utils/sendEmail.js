@@ -6,7 +6,7 @@ const sendEmail = (user) => {
     from: `"Chat Sync" <${process.env.NODEMAILER_AUTH_USER}>`,
     to: user.email,
     subject: "Verify your email to login...",
-    html: `<div>Hello ${user?.name}, please verify your email by clicking this link... </div><a href='${process.env.URL}/verify-email?emailToken=${user?.emailToken}'>Verify Email</a>`,
+    html: `<div>Hello ${user?.name}, please verify your email by clicking this link... </div><a href='${process.env.VERCEL_URL}/verify-email?emailToken=${user?.emailToken}'>Verify Email</a>`,
   };
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
