@@ -12,7 +12,7 @@ const sendEmail = (user) => {
     if (error) {
       console.log("mail error->", error);
     }
-    console.log("Message sent: %s", info.messageId);
+    console.log("Message sent: ", info?.messageId);
     // console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
   });
 };

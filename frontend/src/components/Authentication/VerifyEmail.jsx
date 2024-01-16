@@ -17,41 +17,44 @@ const VerifyEmail = () => {
       setUser(null);
       navigate("/login");
       return;
-    }
-    const verifyEmail = async () => {
-      try {
-        const res = await axios.post(`${API_URL}/api/user/verify-email`, {
-          emailToken,
-        });
-        if (res.status === 200) {
-          setUser(
-            localStorage.setItem(
-              "userInfo",
-              JSON.stringify({ ...user, ...res.data })
-            )
-          );
-          toast({
-            title: "Email Verified",
-            status: "success",
-            duration: 3000,
-            isClosable: true,
-          });
-          setUser(null);
-          navigate("/");
-          return;
-        }
-      } catch (error) {
-        console.log(error);
-        toast({
-          title: "Email Verification Failed",
-          status: "error",
-          duration: 3000,
-          isClosable: true,
-        });
-        return;
+    } else {
+      if (emailToken) {
+        const verifyEmail = async () => {
+          try {
+            const res = await axios.post(`${API_URL}/api/user/verify-email`, {
+              emailToken,
+            });
+            if (res.status === 200) {
+              setUser(
+                localStorage.setItem(
+                  "userInfo",
+                  JSON.stringify({ ...user, ...res.data })
+                )
+              );
+              toast({
+                title: "Email Verified",
+                status: "success",
+                duration: 3000,
+                isClosable: true,
+              });
+              setUser(null);
+              navigate("/");
+              return;
+            }
+          } catch (error) {
+            console.log(error);
+            toast({
+              title: "Email Verification Failed",
+              status: "error",
+              duration: 3000,
+              isClosable: true,
+            });
+            return;
+          }
+        };
+        verifyEmail();
       }
-    };
-    verifyEmail();
+    }
   }, []);
   return (
     <Container width={"100vw"} centerContent>
