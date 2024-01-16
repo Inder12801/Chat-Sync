@@ -1,19 +1,25 @@
 import React, { useEffect } from "react";
 import { API_URL, ChatState } from "../../context/ChatProvider";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import axios from "axios";
+import { useToast } from "@chakra-ui/react";
 
 const VerifyEmail = () => {
   const { user } = ChatState();
   const navigate = useNavigate();
+  let [searchParams, setSearchParams] = useSearchParams();
+  const emailToken = searchParams.get("emailToken");
+  const toast = useToast();
+  console.log(emailToken);
   useEffect(() => {
+    if (user?.isVerified) {
+      navigate("/chats");
+      return;
+    }
     const verifyEmail = async () => {
-      if (user?.isVerified) {
-        navigate("/chats");
-      }
       try {
-        const res = await axios.post(`${API_URL}/verify-email`, {
-          emailToken: user?.emailToken,
+        const res = await axios.post(`${API_URL}/api/user/verify-email`, {
+          emailToken,
         });
         console.log(res);
         if (res.status === 200) {
@@ -23,11 +29,23 @@ const VerifyEmail = () => {
               JSON.stringify({ ...user, ...res.data })
             )
           );
-          navigate("/chats");
+          console.log(user);
+          toast({
+            title: "Email Verified",
+            status: "success",
+            duration: 3000,
+            isClosable: true,
+          });
           return;
         }
       } catch (error) {
         console.log(error);
+        toast({
+          title: "Email Verification Failed",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
         return;
       }
     };
