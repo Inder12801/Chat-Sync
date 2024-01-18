@@ -62,14 +62,15 @@ const Login = () => {
         window.location.reload();
         console.log(res.data);
       } catch (err) {
-        console.log(err);
-        toast({
-          title: "Error",
-          description: err.name,
-          status: "error",
-          duration: 9000,
-          isClosable: true,
-        });
+        console.log(err.response.data.message);
+        if (err)
+          toast({
+            title: "Error",
+            description: err.message,
+            status: "error",
+            duration: 9000,
+            isClosable: true,
+          });
         setLoading(false);
       }
     }

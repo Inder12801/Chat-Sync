@@ -16,7 +16,7 @@ const loginController = expressAsyncHandler(async (req, res) => {
     //get user info
     let user = await User.findOne({ email });
     if (!user) {
-      return res.status(401).json("Invalid credentials");
+      return res.status(401).json("User not found!");
     } else {
       // compare passwords
       const isValidPassword = await bcrypt.compare(password, user.password);
@@ -34,15 +34,13 @@ const loginController = expressAsyncHandler(async (req, res) => {
             token: generateToken(user._id),
           });
         } else {
-          res.status(401).json({
-            message: "Please verify email",
-          });
+          res.status(401).json({ message: "Email not verified" });
         }
       }
     }
   } catch (err) {
     console.log(err);
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ message: err.response.data });
   }
 });
 
