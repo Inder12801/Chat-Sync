@@ -25,6 +25,7 @@ const Signup = () => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [triggerReload, setTriggerReload] = useState(false);
   const [signupformData, setSignupFormData] = useState({
     name: "",
     email: "",
@@ -177,6 +178,7 @@ const Signup = () => {
       // setUser(localStorage.setItem("userInfo", JSON.stringify(res.data)));
       // navigate("/chats");
       // window.location.reload();
+      // setTriggerReload(!triggerReload);
       navigate("/verify-email");
       // console.log(res.data);
       setLoading(false);
@@ -187,6 +189,8 @@ const Signup = () => {
   useEffect(() => {
     if (user?.isVerified) {
       navigate("/chats");
+    } else {
+      navigate("/verify-email");
     }
   }, [user]);
 
