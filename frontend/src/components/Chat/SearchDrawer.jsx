@@ -61,7 +61,7 @@ const SearchDrawer = () => {
       setSearchResults([...res.data]);
       setLoading(false);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       toast({
         title: "Enter Occured!",
         description: "Failed to search user",

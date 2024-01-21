@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Avatar, Text, Tooltip } from "@chakra-ui/react";
+import { Box, Avatar, Text, Tooltip, useToast } from "@chakra-ui/react";
 import moment from "moment";
 import { MdDelete } from "react-icons/md";
 import axios from "axios";
@@ -7,6 +7,7 @@ import { API_URL } from "../../context/ChatProvider";
 
 const ScrollableChat = ({ messages, setMessages, loggedInUser, theme }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const toast = useToast();
 
   const deleteMessage = async (messageId) => {
     if (messageId === "") return;
@@ -26,7 +27,14 @@ const ScrollableChat = ({ messages, setMessages, loggedInUser, theme }) => {
       setMessages(messages.filter((message) => message._id !== messageId));
       // console.log(res.data);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      toast({
+        title: "Error",
+        description: "Error deleting message",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
     }
   };
 

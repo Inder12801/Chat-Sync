@@ -169,6 +169,16 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         //give notification
         if (!notifications.includes(newMessageRecieved)) {
           setNotifications([newMessageRecieved, ...notifications]);
+          toast({
+            title: "New Message",
+            description: `${getSenderFull(
+              loggedInUser,
+              newMessageRecieved.chat.users
+            )} has sent you a message`,
+            status: "success",
+            duration: 3000,
+            isClosable: true,
+          });
           setFetchAgain(!fetchAgain);
         }
       } else {

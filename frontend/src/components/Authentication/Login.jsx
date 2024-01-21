@@ -60,9 +60,9 @@ const Login = () => {
         setUser(localStorage.setItem("userInfo", JSON.stringify(res.data)));
         setLoading(false);
         window.location.reload();
-        console.log(res.data);
+        // console.log(res.data);
       } catch (err) {
-        console.log(err.response.data.message);
+        // console.log(err.response.data.message);
         if (err)
           toast({
             title: "Error",

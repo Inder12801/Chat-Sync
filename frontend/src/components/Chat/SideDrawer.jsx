@@ -27,17 +27,11 @@ import {
 } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { ChatState } from "../../context/ChatProvider";
-import { Badge } from "@mui/material";
-import {
-  MdDarkMode,
-  MdOutlineDarkMode,
-  MdOutlineLightMode,
-} from "react-icons/md";
+import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 
 const SideDrawer = () => {
   const navigate = useNavigate();
   const [isExpanded, setExpanded] = useState(false);
-  const { toggleColorMode } = useColorMode();
   const bgColor = useColorModeValue("white", "gray.800");
   const {
     notifications,

@@ -29,7 +29,7 @@ const VerifyEmail = () => {
             return;
           }
         } catch (error) {
-          console.log(error);
+          // console.log(error);
           toast({
             title: "Email Verification Failed",
             status: "error",

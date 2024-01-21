@@ -51,7 +51,7 @@ const GroupChatModal = ({ children }) => {
       setLoading(false);
       setSearchResults(res.data);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       setLoading(false);
       // write a toast
       toast({

@@ -3,7 +3,6 @@ import {
   FormControl,
   FormLabel,
   IconButton,
-  Img,
   Input,
   InputGroup,
   InputRightElement,
@@ -175,15 +174,20 @@ const Signup = () => {
         isClosable: true,
         position: "bottom",
       });
-      // setUser(localStorage.setItem("userInfo", JSON.stringify(res.data)));
-      // navigate("/chats");
-      // window.location.reload();
-      // setTriggerReload(!triggerReload);
+
       navigate("/verify-email");
       // console.log(res.data);
       setLoading(false);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
+      toast({
+        title: "Error",
+        description: err.response.data.message,
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+        position: "bottom",
+      });
     }
   };
   useEffect(() => {

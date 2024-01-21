@@ -15,7 +15,6 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import Loader from "../Loader/Loader";
 import ChatLoader from "../Loader/ChatLoader";
 import { saveImageToCloudinary } from "../../config/saveImageToCloudinary";
 import axios from "axios";
@@ -37,7 +36,7 @@ const ProfileModal = ({ user, setUser, children, theme }) => {
   };
 
   const handleUpdateUser = async () => {
-    console.log("updateName->", updateName);
+    // console.log("updateName->", updateName);
 
     if (updateName === user?.name && updatePic === user?.pic) {
       toast({
@@ -55,7 +54,7 @@ const ProfileModal = ({ user, setUser, children, theme }) => {
       if (updatePic !== user?.pic) {
         picUrl = await saveImageToCloudinary(updatePic);
       }
-      console.log("picUrl->", picUrl);
+      // console.log("picUrl->", picUrl);
       const updatedUser = await axios.put(
         `${API_URL}/api/user/update/${user?.email}`,
         { name: updateName, pic: picUrl },
@@ -70,9 +69,27 @@ const ProfileModal = ({ user, setUser, children, theme }) => {
         "userInfo",
         JSON.stringify({ ...user, ...updatedUser?.data })
       );
-      console.log("user->", user);
+      // console.log("user->", user);
+      // console.log("updatedUser->", updatedUser?.data);
+      toast({
+        title: "Changes Saved",
+        description: "Changes saved successfully",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+      setLoading(false);
+      setEditMode(false);
+      onClose();
     } catch (error) {
-      console.log("error->", error);
+      // console.log("error->", error);
+      toast({
+        title: "Error",
+        description: "Error updating user",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
     } finally {
       setLoading(false);
     }

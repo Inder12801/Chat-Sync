@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
-import SearchDrawer from "./SearchDrawer";
 import { Box, Button, Stack, Text, VStack, useToast } from "@chakra-ui/react";
 import axios from "axios";
-import { AddIcon } from "@chakra-ui/icons";
 import ChatLoading from "./ChatLoading";
 import GroupChatModal from "../GroupChat/GroupChatModal";
-import { motion } from "framer-motion";
 import { API_URL, ChatState } from "../../context/ChatProvider";
 import { MdGroupAdd } from "react-icons/md";
 
@@ -19,7 +16,6 @@ const MyChats = ({ fetchAgain }) => {
     chats,
     setChats,
     showMyChats,
-    setShowMyChats,
     theme,
   } = ChatState();
   const [loggedUser, setLoggedUser] = useState(
@@ -39,7 +35,14 @@ const MyChats = ({ fetchAgain }) => {
       setChats(res.data);
       // console.log(res.data);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      toast({
+        title: "Error",
+        description: "Error fetching chats",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
     }
   };
   const getSender = (loggedUser, users) => {
@@ -125,7 +128,6 @@ const MyChats = ({ fetchAgain }) => {
                         : "gray.200"
                     }
                     key={chat._id}
-                    // className="div-shadow"
                     width={"100%"}
                     p={"10px"}
                     borderRadius={"20px"}

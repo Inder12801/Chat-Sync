@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import {
   Box,
   Container,
@@ -8,13 +8,11 @@ import {
   TabPanel,
   TabPanels,
   Tabs,
-  Text,
 } from "@chakra-ui/react";
 import Login from "../components/Authentication/Login";
 import Signup from "../components/Authentication/Signup";
 import logo from "../assets/Chat Sync-Logo-Transparent.png";
 import { ChatState } from "../context/ChatProvider";
-import Loader from "../components/Loader/Loader";
 import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
