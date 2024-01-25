@@ -170,13 +170,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         if (!notifications.includes(newMessageRecieved)) {
           setNotifications([newMessageRecieved, ...notifications]);
           console.log("rendering message received");
-          toast({
-            title: "New Message",
-            description: "New notification received",
-            status: "success",
-            duration: 3000,
-            isClosable: true,
-          });
           setFetchAgain(!fetchAgain);
         }
       } else {
